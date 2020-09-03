@@ -60,7 +60,7 @@ font-size: 18px;
 background-color:#e6e8e6;
 }
 .hero.has-bg-image {
-  background:url("./go-explore-forestr-image-copyright-by-Marvin-Laput-Tenepre.jpg") center center;
+  background:url("../images/go-explore-forestr-image-copyright-by-Marvin-Laput-Tenepre.jpg") center center;
   background-size: cover;
   height: 650px;
   background-repeat: no-repeat;
