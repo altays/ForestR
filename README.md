@@ -1,5 +1,5 @@
 # ForestR:
-The goal for this project was to develop an application that would allow a user to find national parks based on current location. This project uses the Bulma framework, National Parks Service API (https://www.nps.gov/subjects/developer/index.htm), Mapquest API (https://developer.mapquest.com/), and IPAPI (https://ipapi.co/).
+The goal for this project was to develop an application that would allow a user to find national parks based on current location. This project uses the Bulma framework, National Parks Service API (https://www.nps.gov/subjects/developer/index.htm), Mapquest API (https://developer.mapquest.com/), and IPAPI (https://ipapi.co/). Background image by Marvin Laput Tenepre, 2020.
 
 The User Story for this project was as follows: 
 
