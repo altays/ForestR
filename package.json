@@ -1,0 +1,28 @@
+{
+  "name": "forestr",
+  "version": "1.0.0",
+  "description": "An application that finds and display national parks based on user location",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/altays/ForestR.git"
+  },
+  "keywords": [
+    "API",
+    "Bulma",
+    "Mapquest",
+    "NPS"
+  ],
+  "author": "Ricardo Schaffer, Victoria Saleem, Alex Taylor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/altays/ForestR/issues"
+  },
+  "homepage": "https://github.com/altays/ForestR#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
