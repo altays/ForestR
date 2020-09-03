@@ -8,7 +8,6 @@
 //// 6.  Park Lat. & Long. is measured against user Lat. & Long. to determine direct distance for general proximity.
 
 document.addEventListener("DOMContentLoaded", function (event) {
-  $("#location-finder").on("click", function(event) {
     event.preventDefault();
     
     /// HIDES HERO BANNER ///
@@ -218,5 +217,4 @@ document.addEventListener("DOMContentLoaded", function (event) {
         })
       })
     }
-  })
 })
