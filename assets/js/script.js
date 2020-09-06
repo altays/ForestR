@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
           method: "GET"
         }).then(function(response){
           let npsResponse = response;
+          console.log(npsResponse)
           for(entry=0; entry < 10; entry++){
           /// NPS RESPONSE / INFORMATION FOR MAP MODAL POPULATION ///
           let parkTitle = npsResponse.data[entry].fullName;
@@ -99,6 +100,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
           let parkFeeOne = npsResponse.data[entry].entranceFees[0];
           let parkFeeTwo =  npsResponse.data[entry].entranceFees[1];
 
+
+          console.log(parkBannerBackground);
           /// USES PARK LAT & LONG TO CREATE PARK PINS
           let parkLatLong = (npsResponse.data[entry].latLong).replace("{", "").replace("}","");
           if(parkLatLong != ''){
@@ -168,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             $(modalSection).text(parkDescription);
 
             /// modalsecion below contains modal image background URL & fallback color of orange (#f15025) in case image does not load. ///
-            $(modalSection).attr("style","background-image:url('assets/images/northern-forest.jpg'); background-size: cover; color: #fff; background-repeat: no-repeat;background-color: #f15025;");
+            $(modalSection).attr("style","background-image:url(" +  parkBannerBackground +  "); ");
             descriptionHeading = document.createElement('H2');
             descriptionHeading.innerHTML = "<u>Why Visit</u>";
             parkWeeklyHours = document.createElement('ul');

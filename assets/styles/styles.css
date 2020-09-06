@@ -51,6 +51,11 @@ a, a:hover {
 
 .modal-card-body {
   background-color:#e6e8e6;
+  background-image:url('assets/images/northern-forest.jpg'); 
+  background-size: cover; 
+  color: #fff; 
+  background-repeat: no-repeat;
+  background-color: #f15025;
 }
 
 .subtitle {
