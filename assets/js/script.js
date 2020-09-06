@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
           method: "GET"
         }).then(function(response){
           let npsResponse = response;
+          // console.log(npsResponse)
           for(entry=0; entry < 10; entry++){
           /// NPS RESPONSE / INFORMATION FOR MAP MODAL POPULATION ///
           let parkTitle = npsResponse.data[entry].fullName;
@@ -99,6 +100,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
           let parkFeeOne = npsResponse.data[entry].entranceFees[0];
           let parkFeeTwo =  npsResponse.data[entry].entranceFees[1];
 
+
+          // console.log(parkBannerBackground);
           /// USES PARK LAT & LONG TO CREATE PARK PINS
           let parkLatLong = (npsResponse.data[entry].latLong).replace("{", "").replace("}","");
           if(parkLatLong != ''){
@@ -164,30 +167,41 @@ document.addEventListener("DOMContentLoaded", function (event) {
             $(modalContainer).append(modalClose);
 
             let modalSection = document.createElement("section");
-            $(modalSection).attr("class", "modal-card-body");
-            $(modalSection).text(parkDescription);
+            $(modalSection).attr("class", "modal-card-body")
 
             /// modalsecion below contains modal image background URL & fallback color of orange (#f15025) in case image does not load. ///
-            $(modalSection).attr("style","background-image:url('assets/images/northern-forest.jpg'); background-size: cover; color: #fff; background-repeat: no-repeat;background-color: #f15025;");
-            descriptionHeading = document.createElement('H2');
-            descriptionHeading.innerHTML = "<u>Why Visit</u>";
+            $(modalSection).attr("style","background-image:url(" +  parkBannerBackground +  "); ");
+
+            descriptionHeading = document.createElement('h2');
+            descriptionHeading.innerHTML = "Why Visit?";
+            $(modalSection).prepend(descriptionHeading);
+
+            let descriptionParagraph = document.createElement("p")
+            descriptionParagraph.innerHTML = parkDescription
+            $(modalSection).append(descriptionParagraph);
+
             parkWeeklyHours = document.createElement('ul');
-            parkWeeklyHours.innerHTML = "<u>Hours</u>";
+            parkWeeklyHoursHeading = document.createElement('h2')
+            parkWeeklyHoursHeading.innerHTML="Hours"
+            
+
             dayofWeek = [standardHoursMonday, standardHoursTuesday, standardHoursWednesday, standardHoursThursday, standardHoursFriday, standardHoursSaturday, standardHoursSunday];
             for (let day=0; day< dayofWeek.length; day++){
               parkDailyHours =document.createElement('li');
               parkWeeklyHours.appendChild(parkDailyHours);
               parkDailyHours.innerHTML=parkDailyHours.innerHTML + dayofWeek[day];
             }
-            $(modalSection).prepend(descriptionHeading);
+
+            $(modalSection).append(parkWeeklyHoursHeading);
             $(modalSection).append(parkWeeklyHours);
 
             // ?????
-            parkDirectionURLA = document.createElement('a');
-            $(parkDirectionURLA).attr("target", "_blank");
-            $(parkDirectionURLA).attr("href",parkDirectionURL);
-            parkDirectionURLA.innerHTML = "directions to " + parkTitle;
-            $(modalSection).append(parkDirectionURL);
+            parkDirectionURLAnchor = document.createElement('a');
+            $(parkDirectionURLAnchor).attr("target", "_blank");
+            $(parkDirectionURLAnchor).attr("href",parkDirectionURL);
+            $(parkDirectionURLAnchor).attr("class","park-link");
+            parkDirectionURLAnchor.innerHTML = "Click here for directions to the" + parkTitle;
+            $(modalSection).append(parkDirectionURLAnchor);
             $(modalCard).append(modalSection);
             $("#modalArea").append(modalContainer);
 
