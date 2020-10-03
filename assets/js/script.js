@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
       } else {
-        locatorText.innerHTML = "Geolocation is not supported by this browser.";
+        locatorText.textContent = "Geolocation is not supported by this browser.";
       }
     }
 
@@ -89,7 +89,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
           let parkTitle = npsResponse.data[entry].fullName;
           let parkDescription = npsResponse.data[entry].description;
           let parkDirectionURL = npsResponse.data[entry].directionsUrl;
-          let parkBannerBackground = npsResponse.data[entry].images[0].url;
           let standardHoursMonday= "Monday: " + npsResponse.data[entry].operatingHours[0].standardHours.monday;
           let standardHoursTuesday="Tuesday: " + npsResponse.data[entry].operatingHours[0].standardHours.tuesday;
           let standardHoursWednesday="Wednesday: " +npsResponse.data[entry].operatingHours[0].standardHours.wednesday;
@@ -97,11 +96,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
           let standardHoursFriday="Friday: " +npsResponse.data[entry].operatingHours[0].standardHours.friday;
           let standardHoursSaturday="Saturday: " +npsResponse.data[entry].operatingHours[0].standardHours.saturday;
           let standardHoursSunday="Sunday: " +npsResponse.data[entry].operatingHours[0].standardHours.sunday;
-          let parkFeeOne = npsResponse.data[entry].entranceFees[0];
-          let parkFeeTwo =  npsResponse.data[entry].entranceFees[1];
 
-
-          // console.log(parkBannerBackground);
           /// USES PARK LAT & LONG TO CREATE PARK PINS
           let parkLatLong = (npsResponse.data[entry].latLong).replace("{", "").replace("}","");
           if(parkLatLong != ''){
@@ -131,7 +126,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
             }
 
             distanceMeasurement();
-
             ////// MODAL POPULATION////////
             let modalContainer = document.createElement("div");
             $(modalContainer).attr("class", "modal");
@@ -170,37 +164,35 @@ document.addEventListener("DOMContentLoaded", function (event) {
             $(modalSection).attr("class", "modal-card-body")
 
             /// modalsecion below contains modal image background URL & fallback color of orange (#f15025) in case image does not load. ///
-            $(modalSection).attr("style","background-image:url(" +  parkBannerBackground +  "); ");
+            // $(modalSection).attr("style","background-image:url(" +  parkBannerBackground +  "); ");
 
             descriptionHeading = document.createElement('h2');
-            descriptionHeading.innerHTML = "Why Visit?";
+            descriptionHeading.textContent = "Why Visit?";
             $(modalSection).prepend(descriptionHeading);
 
             let descriptionParagraph = document.createElement("p")
-            descriptionParagraph.innerHTML = parkDescription
+            descriptionParagraph.textContent = parkDescription
             $(modalSection).append(descriptionParagraph);
 
             parkWeeklyHours = document.createElement('ul');
             parkWeeklyHoursHeading = document.createElement('h2')
-            parkWeeklyHoursHeading.innerHTML="Hours"
-            
+            parkWeeklyHoursHeading.textContent="Hours"
 
             dayofWeek = [standardHoursMonday, standardHoursTuesday, standardHoursWednesday, standardHoursThursday, standardHoursFriday, standardHoursSaturday, standardHoursSunday];
             for (let day=0; day< dayofWeek.length; day++){
               parkDailyHours =document.createElement('li');
               parkWeeklyHours.appendChild(parkDailyHours);
-              parkDailyHours.innerHTML=parkDailyHours.innerHTML + dayofWeek[day];
+              parkDailyHours.textContent=parkDailyHours.textContent + dayofWeek[day];
             }
 
             $(modalSection).append(parkWeeklyHoursHeading);
             $(modalSection).append(parkWeeklyHours);
 
-            // ?????
             parkDirectionURLAnchor = document.createElement('a');
             $(parkDirectionURLAnchor).attr("target", "_blank");
             $(parkDirectionURLAnchor).attr("href",parkDirectionURL);
             $(parkDirectionURLAnchor).attr("class","park-link");
-            parkDirectionURLAnchor.innerHTML = "Click here for directions to the" + parkTitle;
+            parkDirectionURLAnchor.textContent = "Click here for directions to the " + parkTitle;
             $(modalSection).append(parkDirectionURLAnchor);
             $(modalCard).append(modalSection);
             $("#modalArea").append(modalContainer);
